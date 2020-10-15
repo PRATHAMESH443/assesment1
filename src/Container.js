@@ -5,19 +5,19 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import SocialIcon from './Components/Socialcon'
 import config from './Components/config/defaultBlueprint.json'
-
 import clsx from  'clsx';
+import SocialIcon2 from './Components/SocialIcon2';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    //  backgroundColor: 'dimgray',
+     backgroundColor: config.companyInfo.containerBackgroundColor,
+     color: config.companyInfo.textColor,
      margin:'10px auto',
      height: '200px'
    
   },
   paper: {
     textAlign: 'center',
-   
     width: '25%',
     height: '125px',
     display:'flex',
@@ -27,40 +27,36 @@ const useStyles = makeStyles((theme) => ({
     fontSize:'12px',
   },
   leftBorderHeader: {
-         padding: '0px 10px',
-    borderLeft: '1px solid grey',
-  
+    padding: '0px 10px',
+    borderLeft: '1px solid ',
+    borderColor: config.companyInfo.borderColor,
   },
+
  logoMargin:{
     margin:'0px 15px'
  },
  copyRight:{
-  
    display:'flex',
    alignItems:'center',
-   justifyContent:'center'
+   justifyContent:'center',
+   fontSize:'10px'
  }
 }));
 
- function SimpleContainer(props){
+ function SimpleContainer(){
   
      const classes = useStyles();
-
-       const myStyle={
-        backgroundColor: config.companyInfo.containerBackgroundColor,
-         color: config.companyInfo.textColor
-    }
 
   return (
 
     <React.Fragment>
       
       <CssBaseline />
-      <Container maxWidth="lg" style={myStyle}  className={classes.root} >
+      <Container maxWidth="lg" className={classes.root} >
         <Grid container spacing={0}  >
        
         <Grid item lg={3}  className={classes.paper}>
-                <a href="https://www.vlinder.io/"><img src={config.companyInfo.logoSrc} alt="logo" /></a>
+                <a href={config.companyInfo.companyLink}><img src={config.companyInfo.logoSrc} alt={config.companyInfo.logoAlt} /></a>
         </Grid>
        <Grid item lg={3} className={clsx(classes.paper,classes.leftBorderHeader)} >
             {config.companyInfo.address}
@@ -72,15 +68,17 @@ const useStyles = makeStyles((theme) => ({
         </Grid>
 
         <Grid item lg={3} className={clsx(classes.paper,classes.leftBorderHeader)}>
-          <SocialIcon />
+          <SocialIcon2 />
+           
         </Grid>
        
       </Grid>
       <hr/>
       <div  className={classes.copyRight}>
-          <h4>copyright: 2020 vlinder inc. All rights reserved. powered by <a href="https://www.vlinder.io/">vlinder.io</a></h4>
+          <h6>{config.companyInfo.copyright} <a href={config.companyInfo.companyLink}>{config.companyInfo.companyName}</a></h6>
       </div>
       </Container>
+
     </React.Fragment>
   );
 }

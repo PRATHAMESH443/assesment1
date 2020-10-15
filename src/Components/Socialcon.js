@@ -6,6 +6,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import PinterestIcon from '@material-ui/icons/Pinterest';
 
 
+
 const SocialIcon=()=>{
     const output=[];
 
@@ -36,7 +37,8 @@ const SocialIcon=()=>{
     }
     return(
         <div>
-            {getSocialIcons()}
+  
+   {getSocialIcons()}
         </div>
     )
 }
